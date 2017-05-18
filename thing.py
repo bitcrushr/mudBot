@@ -2,16 +2,25 @@ import json
 import requests
 import time
 
+#issue the command 'chat_pass' ingame to acquire a token
 token = ""
-messages = [
-""
-]
+
+#messages go here, in array form
+messages = [""]
+
+#modes: cycle , multi
+#cycle - bot will sequentially send messages on a loop, one at a time
+#multi - bot will send every message every time it loops
+mode = "cycle"
+
+#must be one of your account's users
 username = ""
+
+#selected user must be in this channel
 channel = ""
 
+#how long to wait between messages, in seconds
 timeout = 1000
-
-running = True
 
 def send_request(method, params):
     return requests.post('https://www.hackmud.com/mobile/{}.json'.format(method),
@@ -24,7 +33,16 @@ if len(token) < 6:
     token = res['chat_token']
     print("Replace the token variable with this: {}".format(token))
 
+index = 0
+running = True
+
 while running:
-    for msg in messages:
-        send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : msg} ).json()
+    if mode == "cycle":
+        send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : messages[index]} ).json()
+        index += 1
+        if index > len(messages)-1:
+            index = 0
+    elif mode == "multi":
+        for msg in messages:
+            send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : msg} ).json()
     time.sleep(timeout)
