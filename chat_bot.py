@@ -2,7 +2,8 @@ import json
 import requests
 import time
 
-#issue the command 'chat_pass' ingame to acquire a token
+#issue the command 'chat_pass' ingame to acquire a temporary 'token'
+#run the program once and replace this variable with the long-term token it prints to the console
 token = ""
 
 #messages go here, in array form
