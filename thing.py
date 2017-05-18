@@ -3,7 +3,9 @@ import requests
 import time
 
 token = ""
-message = ""
+messages = [
+""
+]
 username = ""
 channel = ""
 
@@ -23,5 +25,6 @@ if len(token) < 6:
     print("Replace the token variable with this: {}".format(token))
 
 while running:
-    send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : message} ).json()
+    for msg in messages:
+        send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : msg} ).json()
     time.sleep(timeout)
