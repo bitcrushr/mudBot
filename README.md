@@ -6,4 +6,4 @@ Required libraries:
  - json
  - requests
  ```
-- Python 3 -
+Uses Python 3
