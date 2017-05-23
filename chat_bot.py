@@ -14,6 +14,11 @@ messages = [""]
 #multi - bot will send every message every time it loops
 mode = "cycle"
 
+#delay between individual messages in multi mode
+#this does nothing if you're using cycle mode
+#values below .5 will make the messages display out of order
+multi_delay = .5
+
 #must be one of your account's users
 username = ""
 
@@ -46,4 +51,5 @@ while running:
     elif mode == "multi":
         for msg in messages:
             send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : msg} ).json()
+            time.sleep(multi-delay)
     time.sleep(timeout)
