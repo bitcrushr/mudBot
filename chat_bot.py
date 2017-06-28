@@ -51,5 +51,5 @@ while running:
     elif mode == "multi":
         for msg in messages:
             send_request('create_chat',  { 'chat_token' : token, 'username' : username, 'channel' : channel, 'msg' : msg} ).json()
-            time.sleep(multi-delay)
+            time.sleep(multi_delay)
     time.sleep(timeout)
