@@ -1,9 +1,4 @@
 # mudBot
-A simple Hackmud chat bot that sends messages repeatedly - Bot API coming soon.
-```
-Required libraries:
- - time
- - json
- - requests
- ```
+A simple Hackmud chat bot that sends messages repeatedly -
+
 Uses Python 3
